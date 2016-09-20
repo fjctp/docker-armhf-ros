@@ -1,0 +1,10 @@
+MAKE SURE CONTAINER's NAME and HOSTNAME MATCH!!!!
+
+
+docker run -it --rm --net foo --name master ros:ros-kinetic-tutorials roscore
+docker run -it --rm --net foo --name talker --env ROS_HOSTNAME=talker --env ROS_MASTER_URI=http://master:11311 ros:ros-kinetic-tutorials rosrun roscpp_tutorials talker
+docker run -it --rm --net foo --name listener --env ROS_HOSTNAME=listener --env ROS_MASTER_URI=http://master:11311 ros:ros-kinetic-tutorials rosrun roscpp_tutorials listener
+docker run -it --rm --net foo --name tester --env ROS_HOSTNAME=tester --env ROS_MASTER_URI=http://master:11311 ros:ros-kinetic-tutorials bash
+
+rostopic pub /chatter std_msgs/String -r 2 "Do you hear me?"
+rostopic echo /chatter 
