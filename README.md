@@ -1,9 +1,9 @@
 # Dockerfiles for ROS on Raspberry Pi
-## Start master
+## Start ROS server
 ```bash
 docker run -it --rm --net foo --name master fjctp/armhf-ros-kinetic-base roscore
 ```
-## Start tester (using command tools)
+## Start publisher/listener (using command tools)
 ```bash
 docker run -it --rm --net foo --name tester \
            --env ROS_HOSTNAME=tester \
